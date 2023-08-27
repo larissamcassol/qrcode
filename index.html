@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Acesse o  QR Code</title>
+    <title>QR Code</title>
     <style>
         #qrcode-container {
             text-align: center;
@@ -11,7 +11,7 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
-    <h1>Gerador de QR Code</h1>
+    <h1>Acesse o QR Code</h1>
     
     <!-- Div para exibir o QR Code centralizado -->
     <div id="qrcode-container">
@@ -29,22 +29,14 @@
             height: 300
         });
 
-        // Inicializa a contagem de acessos
-        var acessoCount = 0;
-
-        // Exibe a mensagem de erro automaticamente
-        var mensagemErro = "Não abra QR Code desconhecidos!";
-        alert(mensagemErro);
-
         // Evento de clique no QR Code
         document.getElementById("qrcode").addEventListener("click", function () {
             var confirmacao = confirm("Tem certeza de que deseja abrir este QR Code?");
             if (confirmacao) {
-                acessoCount++;
-                var mensagem = "Você acessou o QR Code.\nNúmero de acessos: " + acessoCount;
-                alert(mensagem);
+                // Redireciona para a página de resultado
+                window.location.href = "resultado.html";
             } else {
-                alert(mensagemErro);
+                // Não faz nada
             }
         });
     </script>
