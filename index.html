@@ -2,27 +2,39 @@
 <html>
 <head>
     <title>Gerador de QR Code</title>
+    <style>
+        #qrcode-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
     <h1>Gerador de QR Code</h1>
     
-    <!-- Div para exibir o QR Code -->
-    <div id="qrcode"></div>
+    <!-- Div para exibir o QR Code centralizado -->
+    <div id="qrcode-container">
+        <div id="qrcode"></div>
+    </div>
 
     <script>
         // URL do QR Code
         var url = "https://larissamcassol.github.io/qrcode";
 
-        // Cria um novo QRCode
+        // Cria um novo QRCode centralizado com tamanho 300
         var qrcode = new QRCode(document.getElementById("qrcode"), {
             text: url,
-            width: 128,
-            height: 128
+            width: 300,
+            height: 300
         });
 
         // Inicializa a contagem de acessos
         var acessoCount = 0;
+
+        // Exibe a mensagem de erro automaticamente
+        var mensagemErro = "Não abra QR Code desconhecidos!";
+        alert(mensagemErro);
 
         // Evento de clique no QR Code
         document.getElementById("qrcode").addEventListener("click", function () {
@@ -32,7 +44,7 @@
                 var mensagem = "Você acessou o QR Code.\nNúmero de acessos: " + acessoCount;
                 alert(mensagem);
             } else {
-                alert("Não abra QR Code desconhecidos!");
+                alert(mensagemErro);
             }
         });
     </script>
