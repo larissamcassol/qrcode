@@ -2,9 +2,51 @@
 <html>
 <head>
     <title>Resultado do QR Code</title>
+    <style>
+        body {
+            background-color: red;
+            text-align: center;
+            padding: 50px;
+        }
+        #mensagem {
+            color: white;
+            font-size: 24px;
+        }
+        #contador {
+            color: white;
+            font-size: 36px;
+        }
+        .icon-alert {
+            font-size: 48px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Não Acesse QRcode Desconhecido</h1>
-    <p>Você acessou o QR Code com sucesso!</p>
+    <h1>Resultado do QR Code</h1>
+    <div id="mensagem">
+        <i class="fas fa-exclamation-triangle icon-alert"></i> Não abra QR Code desconhecidos!
+    </div>
+    <div id="contador">
+        Número de acessos: <span id="acessoCount">0</span>
+    </div>
+
+    <script>
+        // Inicializa a contagem de acessos
+        var acessoCount = parseInt(localStorage.getItem('acessoCount')) || 0;
+        document.getElementById('acessoCount').innerText = acessoCount;
+
+        // Atualiza a contagem de acessos
+        function atualizarContador() {
+            acessoCount++;
+            document.getElementById('acessoCount').innerText = acessoCount;
+            localStorage.setItem('acessoCount', acessoCount.toString());
+        }
+
+        // Redireciona de volta à página inicial após alguns segundos
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 5000);
+    </script>
 </body>
 </html>
