@@ -10,9 +10,6 @@
     <!-- Div para exibir o QR Code -->
     <div id="qrcode"></div>
 
-    <!-- Div para exibir a contagem de acessos -->
-    <div id="contador">Número de acessos: 0</div>
-
     <script>
         // URL do QR Code
         var url = "https://larissamcassol.github.io/qrcode";
@@ -27,17 +24,13 @@
         // Inicializa a contagem de acessos
         var acessoCount = 0;
 
-        // Atualiza a exibição da contagem de acessos
-        function atualizarContador() {
-            document.getElementById("contador").innerHTML = "Número de acessos: " + acessoCount;
-        }
-
         // Evento de clique no QR Code
         document.getElementById("qrcode").addEventListener("click", function () {
             var confirmacao = confirm("Tem certeza de que deseja abrir este QR Code?");
             if (confirmacao) {
                 acessoCount++;
-                atualizarContador();
+                var mensagem = "Você acessou o QR Code.\nNúmero de acessos: " + acessoCount;
+                alert(mensagem);
             } else {
                 alert("Não abra QR Code desconhecidos!");
             }
