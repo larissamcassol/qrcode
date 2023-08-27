@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Acesse o QRCode</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Gerador de QR Code</title>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
-    <h1>Acesse o QRCode</h1>
+    <h1>Gerador de QR Code</h1>
     
     <!-- Div para exibir o QR Code -->
     <div id="qrcode"></div>
 
     <!-- Div para exibir a contagem de acessos -->
-    <div id="contador"></div>
+    <div id="contador">Número de acessos: 0</div>
 
     <script>
-        // URL do QR Code (pode ser qualquer URL que você desejar)
+        // URL do QR Code
         var url = "https://larissamcassol.github.io/qrcode";
 
         // Cria um novo QRCode
@@ -33,18 +32,12 @@
             document.getElementById("contador").innerHTML = "Número de acessos: " + acessoCount;
         }
 
-        // Função para registrar um acesso ao QR Code
-        function registrarAcesso() {
-            acessoCount++;
-            atualizarContador();
-        }
-
         // Evento de clique no QR Code
         document.getElementById("qrcode").addEventListener("click", function () {
             var confirmacao = confirm("Tem certeza de que deseja abrir este QR Code?");
             if (confirmacao) {
-                registrarAcesso();
-                window.location.href = url;
+                acessoCount++;
+                atualizarContador();
             } else {
                 alert("Não abra QR Code desconhecidos!");
             }
@@ -52,4 +45,3 @@
     </script>
 </body>
 </html>
-
