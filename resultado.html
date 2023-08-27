@@ -32,16 +32,16 @@
     </div>
 
     <script>
-        // Inicializa a contagem de acessos
-        var acessoCount = parseInt(localStorage.getItem('acessoCount')) || 0;
-        document.getElementById('acessoCount').innerText = acessoCount;
-
-        // Atualiza a contagem de acessos
+        // Função para atualizar o contador de acessos
         function atualizarContador() {
-            acessoCount++;
+            var acessoCount = localStorage.getItem('acessoCount') || 0;
+            acessoCount = parseInt(acessoCount) + 1;
+            localStorage.setItem('acessoCount', acessoCount);
             document.getElementById('acessoCount').innerText = acessoCount;
-            localStorage.setItem('acessoCount', acessoCount.toString());
         }
+
+        // Chama a função de atualização do contador quando a página é carregada
+        window.addEventListener('load', atualizarContador);
 
         // Redireciona de volta à página inicial após alguns segundos
         setTimeout(function() {
